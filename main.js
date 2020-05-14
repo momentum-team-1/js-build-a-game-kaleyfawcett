@@ -6,11 +6,13 @@ class Game {
     let gameSize = { x: gameboard.width, y: gameboard.height};
     this.player = new Player (gameSize);
     this.bullet = new Bullet (gameSize);
+    this.bodies = []
     
     let animate = () => {
         this.update()
         this.drawPlayer(context, gameSize)
         this.drawBullet (context,gameSize)
+        
         requestAnimationFrame(animate) 
     }
     animate () 
@@ -50,6 +52,10 @@ class Player {
     this.keyboarder = Keyboarder 
 }
 
+
+
+
+
 update () {
     if (this.keyboarder.isDown (this.keyboarder.KEYS.LEFT)) {
         this.center.x -= 2
@@ -60,6 +66,7 @@ update () {
         console.log ("pew pew")
         let bullet = new Bullet ({ x: this.center.x, y: this.center.y - this.size.y - 10},
             {x: 0, y: -7})    
+            this.keyboarder.KEYS.S = bullet 
         }
 } 
 }

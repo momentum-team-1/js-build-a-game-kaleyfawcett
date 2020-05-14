@@ -1,3 +1,23 @@
+body {
+    background-color: darkgrey;
+    margin-left: 25%;
+  
+}
+
+
+
 #gameboard {
     border: 1px solid black;
+    background-color: #00a3cc;
+    display: inline-block;
+    margin-left: 100px; 
+    
+    
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    margin-left: 175px;
+
 }
