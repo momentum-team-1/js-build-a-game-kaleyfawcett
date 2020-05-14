@@ -24,7 +24,7 @@ class Game {
 drawBodies (context, gameSize) {
     context.clearRect (0, 0, gameSize.x, gameSize.y)
     for (let body of this.bodies) {
-    context.fillStyle = "#000000"
+    context.fillStyle = "#FFFFFF"
     const xPosition = body.center.x - body.size.x / 2
     const yPosition = body.center.y - body.size.y / 2
     const width = body.size.x
@@ -136,30 +136,12 @@ new Game ()
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-//create bodies for player, enemy to shoot, enemy to avoid, bullets, and bonus
-
-//make the player appear and also move back and forth (DONE) & not go off the screen
-
-//make the player shoot the bullets up 
-
-//make the enemies and bonus move down 
 
 
-//make the enemies disappear after you hit them
 
-//make enemies and bonus not run into each other 
 
-//keep score 
 
-//how to know when game is over
 
-//start over
-
-//opening screen with directions 
-
-/////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // else if (this.center.x < 0) this.center.x = 0;
