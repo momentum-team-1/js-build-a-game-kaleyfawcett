@@ -11,10 +11,8 @@ class Game {
 
     const animate = () => {
       this.update()
+      this.drawBodies(context, gameSize)
 
-      for (let body of this.bodies){
-          this.drawBody(body, context, gameSize)
-      }
 
       requestAnimationFrame(animate)
     }
@@ -22,23 +20,22 @@ class Game {
     animate()
   }
 
-  // Your drawPlayer and drawBullet methods are doing pretty much the same thing!
-  // So we can consolidate with a single method
-  // we'll pass in the body as an argument so the method knows which body it's dealing with
-  drawBody (body, context, gameSize) {
+  drawBodies (context, gameSize) {
     context.clearRect(0, 0, gameSize.x, gameSize.y)
-    context.fillStyle = '#000000'
-    const xPosition = body.center.x - body.size.x / 2
-    const yPosition = body.center.y - body.size.y / 2
-    const width = body.size.x
-    const height = body.size.y
-    context.fillRect(xPosition, yPosition, width, height)
+    for (let body of this.bodies){
+      context.fillStyle = '#000000'
+      const xPosition = body.center.x - body.size.x / 2
+      const yPosition = body.center.y - body.size.y / 2
+      const width = body.size.x
+      const height = body.size.y
+      context.fillRect(xPosition, yPosition, width, height)
+    }
   }
 
   update () {
     // loop over bodies array to call the update method on each of them
     for (let body of this.bodies) {
-        body.update()
+      body.update()
     }
   }
 }
@@ -60,11 +57,12 @@ class Player {
     if (this.keyboarder.isDown(this.keyboarder.KEYS.S)) {
       console.log('pew pew')
       const bullet = new Bullet(
-          { x: this.center.x, y: this.center.y - this.size.y - 10 },
-          { x: 0, y: -7 }
-        )
-    // add the bullet to the bodies array so you can call draw on it in the Game object
+        { x: this.center.x, y: this.center.y - this.size.y - 10 },
+        { x: 0, y: -7 }
+      )
+      // add the bullet to the bodies array so you can call draw on it in the Game object
       this.game.bodies.push(bullet)
+      console.log(this.game.bodies)
     }
   }
 }
@@ -72,7 +70,7 @@ class Player {
 class Bullet {
   constructor (center, velocity) {
     this.center = center
-    this.size = { x: 3, y: 3 }
+    this.size = { x: 3, y: 5 }
     this.velocity = velocity
   }
 
